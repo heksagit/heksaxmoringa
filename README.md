@@ -3,22 +3,22 @@ PT Asuransi Heksa Insurance X Moringa API Gateway
 
 
 
-### Product Inquiry
+### Submit aplication Data
 
 ##### Features
-  - Submit aplication and generate policy
+  - Submit aplication to Moringa API
 
 ##### Endpoint
 POST
 ```sh
-/rest/v1/productinquiry
+/rest/v1/sumbitapplication
 ```
 #### URL Params Required:
-##### -Header
+##### -Authorization Basic Auth
 | Params | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|
-|token| [text] | Y | | |
-|clienId|[text] | Y | | |
+|username| [text] | Y | | |
+|password|[text] | Y | | |
 
 ##### -Body
 | Params | | Data Type | Mandatory | Length | Description |
@@ -121,200 +121,5 @@ success
         "referenceCode": "PASPOLXX001",
         "policyNo": "171950000017"
     }
-}
-```
-
-### Check Blacklist
-##### Endpoint
-POST
-```sh
-/rest/v1/cekblacklist
-```
-
-#### URL Params Required:
-##### -Header
-| Params | Data Type | Mandatory | Length | Description |
-|--|--|--|--|--|
-|token| [text] | Y | | |
-|clienId|[text] | Y | | 
-##### -Body
-| Params | Data Type | Mandatory | Length | Description |
-|--|--|--|--|--|
-|name| [text] | Y | 50 | format dd/MM/yyyy |
-|dob|[text] | Y | | format dd/MM/yyyy |
-
-#### Sample Call
-```sh
-$.ajax({
-    url: "/rest/v1/cekblacklist",
-    dataType: "json",
-    type : "POST",
-    data: {  
-        "name": "SUYATNO",
-        "dob": "29/10/1964"
-    },
-    success : function(response) {
-      console.log(response);
-    }
-  });
-```
-
-#### Sample Response
-| Params | Data Type |
-|--|--|
-|name| [text] |
-|dob|[text] | format dd/MM/yyyy
-|hasil|[integer] 0 = untuk user tidak termasuk blacklist, 1 = jika user adalah user blacklist dan transaksi tidak boleh di lanjutkan
-
-```sh
-{
-    "name": "SUYATNO",
-    "dob": "29/10/1964",
-    "hasil": 1
-}
-```
-
-### Get List of Provinces
-
-##### Features
-  - get all Province
-
-##### Endpoint
-GET
-```sh
-/rest/v1/getProvince
-```
-
-#### URL Params Required:
-##### -Header
-| Params | Data Type | Mandatory | Length | Description |
-|--|--|--|--|--|
-|token| [text] | Y | | |
-|clienId|[text] | Y | |
-
-##### Sample Call:
-QJuery Ajax Call 
-```sh
-$.ajax({
-    url: "/rest/v1/getProvince",
-    headers: {
-        "token": "5D89006A21776A45E050A8C04E0A33D8",
-        "clienId":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
-    }
-    dataType: "json",
-    type : "GET",
-    success : function(response) {
-      console.log(response);
-    }
-  });
-```
-
-##### Sample response:
-success
-```sh
-{
-    "provinceList": [
-        {
-            "provinceName": "-",
-            "provinceId": "0"
-        },
-        {
-            "provinceName": "BALI",
-            "provinceId": "14"
-        },
-        {
-            "provinceName": "BANGKA BELITUNG",
-            "provinceId": "34"
-        },
-        {
-            "provinceName": "BANTEN",
-            "provinceId": "33"
-        },
-        {
-            "provinceName": "BENGKULU",
-            "provinceId": "8"
-        },
-        {
-            "provinceName": "DAERAH ISTIMEWA YOGYAKARTA",
-            "provinceId": "12"
-        },
-        {
-            "provinceName": "DKI JAKARTA",
-            "provinceId": "9"
-        },
-        {
-            "provinceName": "TIMOR TIMUR",
-            "provinceId": "27"
-        }
-    ]
-}
-```
-
-### Get List City by Province
-
-##### Features
-  - get all City by Province
-
-##### Endpoint
-GET
-```sh
-/rest/v1/getCity/{province id}
-```
-
-#### URL Params Required:
-##### -Header
-| Params | Data Type | Mandatory | Length | Description |
-|--|--|--|--|--|
-|token| [text] | Y | | |
-|clienId|[text] | Y | |
-
-##### Sample Call:
-QJuery Ajax Call 
-```sh
-$.ajax({
-    url: "/rest/v1/getCity/10",
-    headers: {
-        "token": "5D89006A21776A45E050A8C04E0A33D8",
-        "clienId":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
-    }
-    dataType: "json",
-    type : "GET",
-    success : function(response) {
-      console.log(response);
-    }
-  });
-```
-
-##### Sample response:
-success
-```sh
-{
-    "cityList": [
-        {
-            "provinceId": "10",
-            "cityId": "299",
-            "cityName": "BANDUNG"
-        },
-        {
-            "provinceId": "10",
-            "cityId": "692",
-            "cityName": "BANDUNG BARAT"
-        },
-        {
-            "provinceId": "10",
-            "cityId": "6",
-            "cityName": "BEKASI"
-        },
-        {
-            "provinceId": "10",
-            "cityId": "8",
-            "cityName": "BOGOR"
-        },
-        {
-            "provinceId": "10",
-            "cityId": "303",
-            "cityName": "CIAMIS"
-        }
-    ]
 }
 ```
