@@ -117,7 +117,7 @@ success
     "status": 200,
     "message": "Success",
     "data": {
-        "linkPolicy": "https://klikasuransiku.com/downloadDirectPolicy?transIdMerchant=2017122803041&uid=5D89006A21776A45E050A8C04E0A33D8&pid=e3d46ec4-277e-4eaf-addb-04d9c604ba3d",
+        "linkPolicy": "https://heksainsurance.co.id/downloadDirectPolicy?transIdMerchant=2017122803041&uid=5D89006A21776A45E050A8C04E0A33D8&pid=e3d46ec4-277e-4eaf-addb-04d9c604ba3d",
         "referenceCode": "PASPOLXX001",
         "policyNo": "171950000017"
     }
