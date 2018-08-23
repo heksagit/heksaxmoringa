@@ -139,6 +139,13 @@ http://heksaku.moringaku.com/my/heksaku2.php
 |username| [text] | Y | | |
 |password|[text] | Y | | |
 
+##### -Body
+| Params | | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+|ReferenceCode| |[text] | Y | 20 | |
+|TransactionCode| |[text] | Y | 20 | |
+|status| |[text] | Y |500 | Berhasil, Gagal|
+
 
 ### Request Data Referral
 
