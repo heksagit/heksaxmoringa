@@ -122,3 +122,36 @@ success
     }
 }
 ```
+
+### Submit Payment Status
+
+##### Features
+  - Submit Payment Status
+##### Endpoint
+POST
+```sh
+http://heksaku.moringaku.com/my/heksaku2.php
+```
+#### URL Params Required:
+##### -Authorization Basic Auth
+| Params | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|
+|username| [text] | Y | | |
+|password|[text] | Y | | |
+
+
+### Request Data Referral
+
+##### Features
+  - Request Data Referral
+##### Endpoint
+POST
+```sh
+http://heksaku.moringaku.com/my/heksaku3.php
+```
+#### URL Params Required:
+##### -Authorization Basic Auth
+| Params | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|
+|username| [text] | Y | | |
+|password|[text] | Y | | |
