@@ -11,7 +11,7 @@ PT Asuransi Heksa Insurance X Moringa API Gateway
 ##### Endpoint
 POST
 ```sh
-/rest/v1/sumbitapplication
+http://heksaku.moringaku.com/my/heksaku.php
 ```
 #### URL Params Required:
 ##### -Authorization Basic Auth
@@ -23,56 +23,58 @@ POST
 ##### -Body
 | Params | | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|--|
-|productID| | [number] | Y | | |
-|productPackageId| |[number] | Y | | |
-|premium| |[number]| Y | | |
-|referenceCode| |[text] | Y | 20 | |
-|transactionDate| |[date] | Y | | format dd/MM/yyyy |
-|voucherCode| |[text] | N | 20 | |
-|policyHolder| |[jsonObject] | Y | | |
-|| firstName |[text] | Y | 50 | |
-|| lastName |[text] | N | 50 | |
-|| email |[text] | Y | 50 | |
-|| phone |[text] | Y | | |
-|| NIK |[text] | Y | 16 | |
-|| dob |[date] | Y | | format dd/MM/yyyy|
-|| address |[text] | Y | 200 | |
-|| sex |[text] | Y | | e.x pria, wanita |
-|| provinceId |[text] | Y | |  |
-|| cityId |[text] | Y | | |
-|insured| |[jsonObject] | Y | | |
-|| firstName |[text] | Y | 50 | |
-|| lastName |[text] | N | 50 | |
-|| email |[text] | Y | | 50 |
-|| phone |[text] | Y | | |
-|| NIK |[text] | Y | 16 | |
-|| dob |[date] | Y | | format dd/MM/yyyy|
-|| address |[text] | Y | 200 | |
-|| sex |[text] | Y | | e.x pria, wanita |
-|| provinceId |[text] | Y | |  |
-|| cityId |[text] | Y | | |
-|beneficiary| |[jsonObject] | Y | | |
-|| fullName |[text] | Y | 50 | |
-|| relation |[text] | Y | |e.x  istri, suami, anak, ayah, ibu, kakak, adik, orang tua|
-|| dob |[date] | Y | | format dd/MM/yyyy|
+|ProductName| | [number] | Y | | |
+|ProductPackageName| |[number] | Y | | |
+|Premium| |[number]| Y | | |
+|ReferenceCode| |[text] | Y | 20 | |
+|TransactionCode| |[text] | Y | 20 | |
+|TransactionDate| |[date] | Y | | format dd/MM/yyyy |
+|PolicyHolder| |[jsonObject] | Y | | |
+|| FullName |[text] | Y | 250 | |
+|| Email |[text] | Y | 50 | |
+|| Phone |[text] | Y | | |
+|| KTPNo |[text] | Y | 16 | |
+|| DOB |[date] | Y | | format dd/MM/yyyy|
+|| Address |[text] | Y | 200 | |
+|| Sex |[text] | Y | | e.x pria, wanita |
+|| ProvinceName |[text] | Y | |  |
+|| CityName |[text] | Y | | |
+|Insured| |[jsonObject] | Y | | |
+|| FullName |[text] | Y | 250 | |
+|| Email |[text] | Y | 50 | |
+|| Phone |[text] | Y | | |
+|| KTPNo |[text] | Y | 16 | |
+|| DOB |[date] | Y | | format dd/MM/yyyy|
+|| Address |[text] | Y | 200 | |
+|| Sex |[text] | Y | | e.x pria, wanita |
+|| ProvinceName |[text] | Y | |  |
+|| CityName |[text] | Y | | |
+|Beneficiary| |[jsonObject] | Y | | |
+|| FullName |[text] | Y | 50 | |
+|| Relation |[text] | Y | |e.x  istri, suami, anak, ayah, ibu, kakak, adik, orang tua|
+|| Bob |[date] | Y | | format dd/MM/yyyy|
 
 ##### Sample Call:
 QJuery Ajax Call 
 ```sh
 $.ajax({
-    url: "/rest/v1/productinquiry",
+    url: "http://heksaku.moringaku.com/my/heksaku.php",
+    authorization: {
+        "type" : "Basic Auth",
+        "username": "5D89006A21776A45E050A8C04E0A33D8",
+        "password":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
+    }
     headers: {
-        "token": "5D89006A21776A45E050A8C04E0A33D8",
-        "clienId":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
+        "Authorization": "5D89006A21776A45E050A8C04E0A33D8",
     }
     dataType: "json",
     type : "POST",
     data: { 
-          "productID": "1",
-          "productPackageID": "1",
-          "premium": "7500",
+          "ProductName": "Heksa Proteksi Plus",
+          "ProductPackageName": "Platinum",
+          "premium": "1500000",
           "referenceCode": "PASPOLXX001",
-          "transactionDate": "31/01/2017",
+          "ReferenceCode": "31/01/2017",
           "voucherCode": "ULTAH2ASJ",
           "policyHolder": {
             "firstName": "Jhon",
@@ -117,9 +119,6 @@ success
     "status": 200,
     "message": "Success",
     "data": {
-        "linkPolicy": "https://heksainsurance.co.id/downloadDirectPolicy?transIdMerchant=2017122803041&uid=5D89006A21776A45E050A8C04E0A33D8&pid=e3d46ec4-277e-4eaf-addb-04d9c604ba3d",
-        "referenceCode": "PASPOLXX001",
-        "policyNo": "171950000017"
     }
 }
 ```
