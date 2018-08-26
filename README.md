@@ -23,8 +23,8 @@ http://heksaku.moringaku.com/my/heksaku.php
 ##### -Body
 | Params | | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|--|
-|ProductName| | [number] | Y | | |
-|ProductPackageName| |[number] | Y | | |
+|ProductName| | [text] | Y |150 | |
+|ProductPackageName| |[text] | Y |150 | |
 |Premium| |[number]| Y | | |
 |SumInsured| |[number]| Y | | |
 |ReferenceCode| |[text] | Y | 20 | |
