@@ -26,6 +26,7 @@ http://heksaku.moringaku.com/my/heksaku.php
 |ProductName| | [number] | Y | | |
 |ProductPackageName| |[number] | Y | | |
 |Premium| |[number]| Y | | |
+|UP| |[number]| Y | | |
 |ReferenceCode| |[text] | Y | 20 | |
 |TransactionCode| |[text] | Y | 20 | |
 |TransactionDate| |[date] | Y | | format dd/MM/yyyy |
@@ -73,9 +74,9 @@ $.ajax({
           "ProductName": "Heksa Proteksi Plus",
           "ProductPackageName": "Platinum",
           "premium": "1500000",
+          "up":"65000000"
           "referenceCode": "PASPOLXX001",
           "ReferenceCode": "31/01/2017",
-          "voucherCode": "ULTAH2ASJ",
           "policyHolder": {
             "firstName": "Jhon",
             "lastName": "Dhoe",
