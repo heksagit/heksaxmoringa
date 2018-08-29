@@ -61,7 +61,7 @@ QJuery Ajax Call
 $.ajax({
     url: "http://heksaku.moringaku.com/my/heksaku.php",
     authorization: {
-        "type" : "Basic Auth",
+        "type": "Basic Auth",
         "username": "5D89006A21776A45E050A8C04E0A33D8",
         "password":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
     }
@@ -70,42 +70,42 @@ $.ajax({
     }
     dataType: "json",
     type : "POST",
-    data: { 
-          "ProductName": "Heksa Proteksi Plus",
-          "ProductPackageName": "Platinum",
-          "premium": "1500000",
-          "SumInsured":"65000000"
-          "referenceCode": "PASPOLXX001",
-          "ReferenceCode": "31/01/2017",
-          "policyHolder": {
-            "firstName": "Jhon",
-            "lastName": "Dhoe",
-            "email": "jhon.doe@gmail.com",
-            "phone": "085667788990",
-            "NIK": "0923384958674349",
-            "dob": "02/07/1990",
-            "address": "",
-            "sex": "pria/wanita",
-            "provinceID": "1",
-            "cityID": "1"
-          },
-          "insured": {
-            "firstName": "Jhon",
-            "lastName": "Dhoe",
-            "email": "jhon.doe@gmail.com",
-            "phone": "085667788990",
-            "NIK": "0923384958674349",
-            "dob": "02/07/1990",
-            "address": "",
-            "sex": "pria/wanita",
-            "provinceID": "1",
-            "cityID": "1"
-          },
-          "beneficiary": {
-            "fullName": "Mika Dhoe",
-            "relation": "adik",
-            "dobBen": "02/07/1993"
-          }
+    data: {
+            "ProductName":"Asuransi Heksa Proteksi Plus",
+            "ProductPackageName":"Silver",
+            "Premium":0.0,
+            "SumInsured":0.0,
+            "ReferenceCode":"",
+            "TransactionDate":"",
+            "PolicyHolder":
+              {
+                "FullName":"ibnu nugroho",
+                "Email":"ibnu.nugroho@outlook.com",
+                "Phone":"85295962498",
+                "KTPNo":"asdasd",
+                "DOB":"01/08/1990",
+                "Address":"asdasd",
+                "Sex":"L",
+                "ProvinceName":"Jawa Barat",
+                "CityName":"Cirebon"},
+            "Insured":
+              {
+               "FullName":"ibnu nugroho",
+               "Email":"ibnu.nugroho@outlook.com",
+               "Phone":"85295962498",
+               "KTPNo":"asdasd",
+               "DOB":"01/08/1990",
+               "Address":"asdasd",
+               "Sex":"L",
+               "ProvinceName":"Jawa Barat",
+               "CityName":"Cirebon"
+              },
+            "Beneficiary":
+            {
+             "FullName":"penerima1",
+             "Relation":"Anak",
+             "Bob":"02/07/2017"
+            }
     },
     success : function(response) {
       console.log(response);
