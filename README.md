@@ -73,32 +73,33 @@ $.ajax({
     data: {
             "ProductName":"Asuransi Heksa Proteksi Plus",
             "ProductPackageName":"Silver",
-            "Premium":0.0,
-            "SumInsured":0.0,
+            "Premium":1500000.0,
+            "SumInsured":84000000.0,
             "ReferenceCode":"",
             "TransactionDate":"",
             "PolicyHolder":
               {
-                "FullName":"ibnu nugroho",
-                "Email":"ibnu.nugroho@outlook.com",
-                "Phone":"85295962498",
+                "FullName":"Jhone Doe",
+                "Email":"jhone@outlook.com",
+                "Phone":"085623421112",
                 "KTPNo":"asdasd",
                 "DOB":"01/08/1990",
                 "Address":"asdasd",
                 "Sex":"L",
                 "ProvinceName":"Jawa Barat",
-                "CityName":"Cirebon"},
+                "CityName":"Cirebon"
+              },
             "Insured":
               {
-               "FullName":"ibnu nugroho",
-               "Email":"ibnu.nugroho@outlook.com",
-               "Phone":"85295962498",
-               "KTPNo":"asdasd",
-               "DOB":"01/08/1990",
-               "Address":"asdasd",
-               "Sex":"L",
-               "ProvinceName":"Jawa Barat",
-               "CityName":"Cirebon"
+                "FullName":"Jhone Doe",
+                "Email":"jhone@outlook.com",
+                "Phone":"085623421112",
+                "KTPNo":"asdasd",
+                "DOB":"01/08/1990",
+                "Address":"asdasd",
+                "Sex":"L",
+                "ProvinceName":"Jawa Barat",
+                "CityName":"Cirebon"
               },
             "Beneficiary":
             {
