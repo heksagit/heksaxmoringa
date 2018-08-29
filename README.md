@@ -148,6 +148,43 @@ http://heksaku.moringaku.com/my/heksaku2.php
 |TransactionCode| |[text] | Y | 20 | |
 |status| |[text] | Y |500 | Berhasil, Gagal|
 
+##### Sample Call:
+QJuery Ajax Call 
+```sh
+$.ajax({
+    url: "http://heksaku.moringaku.com/my/heksaku2.php",
+    authorization: {
+        "type": "Basic Auth",
+        "username": "5D89006A21776A45E050A8C04E0A33D8",
+        "password":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
+    }
+    headers: {
+        "Authorization": "5D89006A21776A45E050A8C04E0A33D8",
+    }
+    dataType: "json",
+    type : "POST",
+    data: {
+            "ReferenceCode":"Ref001",
+            "TransactionCode":"Trx002",
+            "status": "Success",
+    },
+    success : function(response) {
+      console.log(response);
+    }
+  });
+```
+
+##### Sample response:
+success
+```sh
+{
+    "status": 200,
+    "message": "Success",
+    "data": {
+    }
+}
+```
+
 
 ### Request Data Referral
 
@@ -164,3 +201,50 @@ http://heksaku.moringaku.com/my/heksaku3.php
 |--|--|--|--|--|
 |username| [text] | Y | | |
 |password|[text] | Y | | |
+
+
+##### -Body
+| Params | | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+|ReferenceCode| |[text] | Y | 20 | |
+|TransactionCode| |[text] | Y | 20 | |
+
+##### Sample Call:
+QJuery Ajax Call 
+```sh
+$.ajax({
+    url: "http://heksaku.moringaku.com/my/heksaku2.php",
+    authorization: {
+        "type": "Basic Auth",
+        "username": "5D89006A21776A45E050A8C04E0A33D8",
+        "password":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
+    }
+    headers: {
+        "Authorization": "5D89006A21776A45E050A8C04E0A33D8",
+    }
+    dataType: "json",
+    type : "POST",
+    data: {
+            "ReferenceCode":"Ref001",
+            "TransactionCode":"Trx002",
+    },
+    success : function(response) {
+      console.log(response);
+    }
+  });
+```
+
+##### Sample response:
+success
+```sh
+{
+    "status": 200,
+    "message": "Success",
+    "data": {
+      "FullName":"Jhone Djo",
+      "Phone":"082342423423423"
+      "Email":""082424342"
+      
+    }
+}
+```
