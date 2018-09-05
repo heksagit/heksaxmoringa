@@ -27,6 +27,7 @@ http://heksaku.moringaku.com/my/heksaku.php
 |ProductPackageName| |[text] | Y |150 | |
 |Premium| |[number]| Y | | |
 |SumInsured| |[number]| Y | | |
+|SPAJNo| |[text] | Y | 20 | |
 |ReferenceCode| |[text] | Y | 20 | |
 |TransactionCode| |[text] | Y | 20 | |
 |TransactionDate| |[date] | Y | | format dd/MM/yyyy |
@@ -75,7 +76,9 @@ $.ajax({
             "ProductPackageName":"Silver",
             "Premium":1500000.0,
             "SumInsured":84000000.0,
-            "ReferenceCode":"",
+            "SPAJNo":"NCB013",
+            "ReferenceCode":"Ref01",
+            "TransactionCode":"031312313",
             "TransactionDate":"",
             "PolicyHolder":
               {
@@ -146,6 +149,7 @@ http://heksaku.moringaku.com/my/heksaku2.php
 |--|--|--|--|--|--|
 |ReferenceCode| |[text] | Y | 20 | |
 |TransactionCode| |[text] | Y | 20 | |
+|SPAJNo| |[text] | Y | 20 | |
 |status| |[text] | Y |500 | Berhasil, Gagal|
 
 ##### Sample Call:
@@ -166,6 +170,7 @@ $.ajax({
     data: {
             "ReferenceCode":"Ref001",
             "TransactionCode":"Trx002",
+            "SPAJNo":"NCB001",
             "status": "Success",
     },
     success : function(response) {
