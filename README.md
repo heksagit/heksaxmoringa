@@ -41,6 +41,7 @@ http://heksaku.moringaku.com/my/heksaku.php
 || Sex |[text] | Y | | e.x pria, wanita |
 || ProvinceName |[text] | Y | |  |
 || CityName |[text] | Y | | |
+|| NPWP |[text] | Y | | |
 |Insured| |[jsonObject] | Y | | |
 || FullName |[text] | Y | 250 | |
 || Email |[text] | Y | 50 | |
@@ -55,6 +56,11 @@ http://heksaku.moringaku.com/my/heksaku.php
 || FullName |[text] | Y | 50 | |
 || Relation |[text] | Y | |e.x  istri, suami, anak, ayah, ibu, kakak, adik, orang tua|
 || Bob |[date] | Y | | format dd/MM/yyyy|
+|Bank| |[jsonObject] | Y | | |
+|| BankName |[text] | Y | | |
+|| BankBranch |[text] | Y | | |
+|| BankAccountName |[text] | Y | | |
+|| BankAccountNo |[text] | Y | | |
 
 ##### Sample Call:
 QJuery Ajax Call 
@@ -90,7 +96,8 @@ $.ajax({
                 "Address":"asdasd",
                 "Sex":"L",
                 "ProvinceName":"Jawa Barat",
-                "CityName":"Cirebon"
+                "CityName":"Cirebon",
+                "NPWP":"023324234234234234"
               },
             "Insured":
               {
@@ -109,6 +116,13 @@ $.ajax({
              "FullName":"penerima1",
              "Relation":"Anak",
              "Bob":"02/07/2017"
+            },
+            "Bank":
+            {
+             "BankName":"Mandiri",
+             "BankBranch":"kuningan",
+             "BankAccountName":"jhon doe",
+             "BankAccountNo":"034234234234234"
             }
     },
     success : function(response) {
