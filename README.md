@@ -267,3 +267,175 @@ success
     }
 }
 ```
+### Get Daily Moringa Data By Date
+
+##### Features
+  - Get All Transaction in 1 day
+
+##### Endpoint
+POST
+```sh
+https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=<dd/MM/yyyy>
+```
+#### URL Params Required:
+##### -Authorization Basic Auth
+| Params | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|
+|username| [text] | Y | | |
+|password|[text] | Y | | |
+
+##### -Body
+| Params | | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+|StatusCode|| [text] | Y |4 | 00 = success, 50 = error |
+|StatusMessage|| [text] | Y |100 | API Status success, error |
+|Value| |[jsonObject] | Y | | | 
+||ProductName| | [text] | Y |150 | |
+||ProductPackageName| |[text] | Y |150 | |
+||Premium| |[number]| Y | | |
+||SumInsured| |[number]| Y | | |
+||SPAJNo| |[text] | Y | 20 | |
+||ReferenceCode| |[text] | Y | 20 | |
+||TransactionCode| |[text] | Y | 20 | |
+||TransactionDate| |[date] | Y | | format dd/MM/yyyy |
+||PolicyHolder| |[jsonObject] | Y | | |
+||| FullName |[text] | Y | 250 | |
+||| Email |[text] | Y | 50 | |
+||| Phone |[text] | Y | | |
+||| KTPNo |[text] | Y | 16 | |
+||| DOB |[date] | Y | | format dd/MM/yyyy|
+||| Address |[text] | Y | 200 | |
+||| Sex |[text] | Y | | e.x pria, wanita |
+||| ProvinceName |[text] | Y | |  |
+||| CityName |[text] | Y | | |
+||| NPWP |[text] | Y | | |
+||Insured| |[jsonObject] | Y | | |
+||| FullName |[text] | Y | 250 | |
+||| Email |[text] | Y | 50 | |
+||| Phone |[text] | Y | | |
+||| KTPNo |[text] | Y | 16 | |
+||| DOB |[date] | Y | | format dd/MM/yyyy|
+||| Address |[text] | Y | 200 | |
+||| Sex |[text] | Y | | e.x pria, wanita |
+||| ProvinceName |[text] | Y | |  |
+||| CityName |[text] | Y | | |
+||Beneficiary| |[jsonObject] | Y | | |
+||| FullName |[text] | Y | 50 | |
+||| Relation |[text] | Y | |e.x  istri, suami, anak, ayah, ibu, kakak, adik, orang tua|
+||| Bob |[date] | Y | | format dd/MM/yyyy|
+||Bank| |[jsonObject] | Y | | |
+||| BankName |[text] | Y | | |
+||| BankBranch |[text] | Y | | |
+||| BankAccountName |[text] | Y | | |
+||| BankAccountNo |[text] | Y | | |
+
+##### Sample Call:
+QJuery Ajax Call 
+```sh
+$.ajax({
+    url: "https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=03/10/2018",
+    authorization: {
+        "type": "Basic Auth",
+        "username": "5D89006A21776A45E050A8C04E0A33D8",
+        "password":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
+    }
+    headers: {
+        "Authorization": "5D89006A21776A45E050A8C04E0A33D8",
+    }
+    dataType: "json",
+    type : "POST",
+    success : function(response) {
+      console.log(response);
+    }
+  });
+```
+
+success
+```sh
+{
+    "StatusCode": "00",
+    "StatusMessage": "Success",
+    "Value": {
+                "ProductName": "Heksa Proteksi Plus",
+                "ProductPackageName": "Silver",
+                "Premium": 1500000,
+                "SumInsured": 65000000,
+                "ReferenceCode": "moringaku",
+                "SPAJNo": "NCB000001071",
+                "TransactionCode": "testtingID1245",
+                "TransactionDate": "03/10/2018",
+                "PaymentStatus": "GAGAL",
+                "PolicyHolder": {
+                    "FullName": "Test DOKU",
+                    "Email": "test@gmail.com",
+                    "Phone": "0215150555",
+                    "KTPNo": "3201257300498888",
+                    "DOB": "01/10/1987",
+                    "Address": "Jl. Kebon Jeruk",
+                    "Sex": "P",
+                    "ProvinceName": "DKI Jakarta",
+                    "CityName": "Kota Jakarta Barat",
+                    "NPWP": "01020304050607"
+                },
+                "Insured": {
+                    "FullName": "Test DOKU",
+                    "Email": "test@gmail.com",
+                    "Phone": "0215150555",
+                    "KTPNo": "3201257300498888",
+                    "DOB": "01/10/1987",
+                    "Address": "Jl. Kebon Jeruk",
+                    "Sex": "P",
+                    "ProvinceName": "DKI Jakarta",
+                    "CityName": "Kota Jakarta Barat"
+                },
+                "Beneficiary": null,
+                "Bank": {
+                    "BankName": "BCA",
+                    "BankBranch": "Jakarta",
+                    "BankAccountName": "Test",
+                    "BankAccountNo": "123456789"
+                }
+            },
+            {
+                "ProductName": "Heksa Proteksi Plus",
+                "ProductPackageName": "Silver",
+                "Premium": 1500000,
+                "SumInsured": 85000000,
+                "ReferenceCode": "ncb000001011",
+                "SPAJNo": "NCB000001072",
+                "TransactionCode": "153854380724677",
+                "TransactionDate": "03/10/2018",
+                "PaymentStatus": "GAGAL",
+                "PolicyHolder": {
+                    "FullName": "testing production 1003",
+                    "Email": "xxxxx@outlook.com",
+                    "Phone": "085295962498",
+                    "KTPNo": "0324823482382823",
+                    "DOB": "06/10/2000",
+                    "Address": "asdasd asdasd",
+                    "Sex": "L",
+                    "ProvinceName": "Nanggroe Aceh Darussalam (NAD)",
+                    "CityName": "Kabupaten Aceh Barat",
+                    "NPWP": ""
+                },
+                "Insured": {
+                    "FullName": "testing production 1003",
+                    "Email": "ibnu.nugroho@outlook.com",
+                    "Phone": "085295962498",
+                    "KTPNo": "0324823482382823",
+                    "DOB": "06/10/2000",
+                    "Address": "asdasd asdasd",
+                    "Sex": "L",
+                    "ProvinceName": "Nanggroe Aceh Darussalam (NAD)",
+                    "CityName": "Kabupaten Aceh Barat"
+                },
+                "Beneficiary": null,
+                "Bank": {
+                    "BankName": "Mandiri",
+                    "BankBranch": "Cirebon",
+                    "BankAccountName": "ibnu nugroho",
+                    "BankAccountNo": "04242323434324"
+                }
+            }
+    },
+```
