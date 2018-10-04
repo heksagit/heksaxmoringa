@@ -409,7 +409,7 @@ success
                 "PolicyHolder": {
                     "FullName": "testing production 1003",
                     "Email": "xxxxx@outlook.com",
-                    "Phone": "085295962498",
+                    "Phone": "08555555555",
                     "KTPNo": "0324823482382823",
                     "DOB": "06/10/2000",
                     "Address": "asdasd asdasd",
@@ -421,7 +421,7 @@ success
                 "Insured": {
                     "FullName": "testing production 1003",
                     "Email": "ibnu.nugroho@outlook.com",
-                    "Phone": "085295962498",
+                    "Phone": "0855555555555",
                     "KTPNo": "0324823482382823",
                     "DOB": "06/10/2000",
                     "Address": "asdasd asdasd",
@@ -433,7 +433,7 @@ success
                 "Bank": {
                     "BankName": "Mandiri",
                     "BankBranch": "Cirebon",
-                    "BankAccountName": "ibnu nugroho",
+                    "BankAccountName": "xxxxxxxxxxxx",
                     "BankAccountNo": "04242323434324"
                 }
             }
@@ -582,7 +582,7 @@ success
                 "PolicyHolder": {
                     "FullName": "testing production 1003",
                     "Email": "xxxxx@outlook.com",
-                    "Phone": "085295962498",
+                    "Phone": "08555555555",
                     "KTPNo": "0324823482382823",
                     "DOB": "06/10/2000",
                     "Address": "asdasd asdasd",
@@ -593,8 +593,8 @@ success
                 },
                 "Insured": {
                     "FullName": "testing production 1003",
-                    "Email": "ibnu.nugroho@outlook.com",
-                    "Phone": "085295962498",
+                    "Email": "xxxx@outlook.com",
+                    "Phone": "08555555555",
                     "KTPNo": "0324823482382823",
                     "DOB": "06/10/2000",
                     "Address": "asdasd asdasd",
@@ -606,7 +606,7 @@ success
                 "Bank": {
                     "BankName": "Mandiri",
                     "BankBranch": "Cirebon",
-                    "BankAccountName": "ibnu nugroho",
+                    "BankAccountName": "xxxxxxxxxxx",
                     "BankAccountNo": "04242323434324"
                 }
             }
