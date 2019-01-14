@@ -15,12 +15,14 @@ http://heksaku.moringaku.com/my/heksaku.php
 ```
 #### URL Params Required:
 ##### -Authorization Basic Auth
+# 
 | Params | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|
 |username| [text] | Y | | |
 |password|[text] | Y | | |
 
 ##### -Body
+#
 | Params | | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|--|
 |ProductName| | [text] | Y |150 | |
@@ -63,7 +65,7 @@ http://heksaku.moringaku.com/my/heksaku.php
 || BankAccountNo |[text] | Y | | |
 
 ##### Sample Call:
-QJuery Ajax Call 
+JQuery Ajax Call 
 ```sh
 $.ajax({
     url: "http://heksaku.moringaku.com/my/heksaku.php",
@@ -167,7 +169,7 @@ http://heksaku.moringaku.com/my/heksaku2.php
 |status| |[text] | Y |500 | Berhasil, Gagal|
 
 ##### Sample Call:
-QJuery Ajax Call 
+JQuery Ajax Call 
 ```sh
 $.ajax({
     url: "http://heksaku.moringaku.com/my/heksaku2.php",
@@ -229,7 +231,7 @@ http://heksaku.moringaku.com/my/heksaku3.php
 |TransactionCode| |[text] | Y | 20 | |
 
 ##### Sample Call:
-QJuery Ajax Call 
+JQuery Ajax Call 
 ```sh
 $.ajax({
     url: "http://heksaku.moringaku.com/my/heksaku2.php",
@@ -330,7 +332,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=<dd/MM/yyy
 ||| BankAccountNo |[text] | Y | | |
 
 ##### Sample Call:
-QJuery Ajax Call 
+JQuery Ajax Call 
 ```sh
 $.ajax({
     url: "https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=03/10/2018",
@@ -503,7 +505,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByTrxID?trxid=testting
 ||| BankAccountNo |[text] | Y | | |
 
 ##### Sample Call:
-QJuery Ajax Call 
+JQuery Ajax Call 
 ```sh
 $.ajax({
     url: "https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=03/10/2018",
