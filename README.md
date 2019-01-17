@@ -97,7 +97,7 @@ $.ajax({
     data: {
             "ProductName":"Asuransi Heksa Proteksi Plus",
             "ProductPackageName":"Silver",
-            "ProductType":"monthly",
+            "ProductType":"2",
             "Premium":1500000.0,
             "SumInsured":84000000.0,
             "SPAJNo":"NCB013",
