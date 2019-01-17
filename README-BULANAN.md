@@ -355,13 +355,13 @@ $.ajax({
 #
 
 ____________________________________________________________________
-### Submit Payment Status Recurring
+### Submit Payment Status Renewal
 #### URL & Params Required:
 
 ##### - Features
   - Sender : **Heksa**
   - Target API : **Moringa**
-  - Submit Status Recurring Payment From **Heksa** To **Moringa** API
+  - Submit Status Renewal Payment From **Heksa** To **Moringa** API
 #
 ##### - Endpoint
 ```sh
@@ -442,6 +442,97 @@ $.ajax({
                     "Status":"Berhasil"
                 }
             ]
+    },
+    success : function(response) {
+      console.log(response);
+    }
+  });
+```
+#
+
+##### Sample response:
+###### Success Response
+```sh
+{
+    "status": 200,
+    "message": "Success",
+    "data": {
+    }
+}
+```
+###### Failed Response
+```sh
+{
+    "status": 500,
+    "message": "There is an error in system",
+    "data": {
+    }
+}
+```
+#
+____________________________________________________________________
+
+____________________________________________________________________
+### Submit Repayment Page URL
+#### URL & Params Required:
+
+##### - Features
+  - Sender : **Heksa**
+  - Target API : **Moringa**
+  - Submit Repayment Page URL From **Heksa** To **Moringa** API
+  - Kirim URL untuk pembayaran ulang apabila tidak ada transaksi selama 1 jam / terjadi error pada doku
+#
+##### - Endpoint
+```sh
+http://heksaku.moringaku.com/bulanan/heksaku5.php
+```
+#
+##### - Method : POST
+#
+
+##### - Authorization Basic Auth
+| Params | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|
+|username| [text] | Y | | |
+|password|[text] | Y | | |
+#
+
+##### - Body Structure
+| Params | | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+|ReferenceCode| |[text] | Y | 20 | |
+|TransactionCode| |[text] | Y | 20 | |
+|URL| |[text] | Y | 250 | |
+
+#
+
+##### - Result Structure
+| Params |  | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+| status |  | [Text] | Y | 4 |  |
+| message |  | [Text] | Y | 100 |  |
+| data |  | [jsonObject]  |  |  |  |
+#
+
+##### - Sample Call:
+###### JQuery Ajax Call 
+```sh
+$.ajax({
+    url: "http://heksaku.moringaku.com/bulanan/heksaku5.php",
+    authorization: {
+        "type": "Basic Auth",
+        "username": "5D89006A21776A45E050A8C04E0A33D8",
+        "password":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
+    }
+    headers: {
+        "Authorization": "5D89006A21776A45E050A8C04E0A33D8",
+    }
+    dataType: "json",
+    type : "POST",
+    data: {
+            "ReferenceCode":"Ref001",
+            "TransactionCode":"Trx002",
+            "URL":"https://heksainsurance.co.id/heksaecommerce/beli/repayment?trxid=Trx002&refid=Ref001"
     },
     success : function(response) {
       console.log(response);
