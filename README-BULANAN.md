@@ -602,6 +602,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=<dd/MM/yyy
 |Value| |[jsonObject] | Y | | | 
 ||ProductName| | [text] | Y |150 | |
 ||ProductPackageName| |[text] | Y |150 | |
+||ProductType| |[number] | Y |  | 1 = Bulanan, 2 = Tahunan |
 ||Premium| |[number]| Y | | |
 ||SumInsured| |[number]| Y | | |
 ||SPAJNo| |[text] | Y | 20 | |
@@ -671,6 +672,7 @@ $.ajax({
     "Value": {
                 "ProductName": "Heksa Proteksi Plus",
                 "ProductPackageName": "Silver",
+                "ProductType": 1,
                 "Premium": 1500000,
                 "SumInsured": 65000000,
                 "ReferenceCode": "moringaku",
@@ -803,6 +805,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByTrxID?trxid=testting
 |Value| |[jsonObject] | Y | | | 
 ||ProductName| | [text] | Y |150 | |
 ||ProductPackageName| |[text] | Y |150 | |
+||ProductType| |[number] | Y |  | 1 = Bulanan, 2 = Tahunan |
 ||Premium| |[number]| Y | | |
 ||SumInsured| |[number]| Y | | |
 ||SPAJNo| |[text] | Y | 20 | |
@@ -872,6 +875,7 @@ $.ajax({
     "Value": {
                 "ProductName": "Heksa Proteksi Plus",
                 "ProductPackageName": "Silver",
+                "ProductType": 1,
                 "Premium": 1500000,
                 "SumInsured": 65000000,
                 "ReferenceCode": "moringaku",
