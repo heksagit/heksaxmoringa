@@ -433,21 +433,21 @@ $.ajax({
             "ProductType":"2"
             "BillingPayments":[{
                     "BillingCode":"190200000030",
-                    "PaymentDate":"20/03/2019",
-                    "DueDate":"25/02/2019",
+                    "PaymentDate":"20/12/2019",
+                    "DueDate":"05/01/2019",
                     "PaymentType":"1",
                     "BillOrder":"2",
-                    "BillYearOrder":"1",
-                    "Amount":"500000",
+                    "BillYearOrder":"2",
+                    "Amount":"3000000",
                     "Status":"BERHASIL"
                 }, {
                     "BillingCode":"190200000030",
-                    "PaymentDate":"20/03/2019",
-                    "DueDate":"25/03/2019",
+                    "PaymentDate":"20/12/2019",
+                    "DueDate":"05/01/2020",
                     "PaymentType":"1",
                     "BillOrder":"3",
-                    "BillYearOrder":"1",
-                    "Amount":"500000",
+                    "BillYearOrder":"3",
+                    "Amount":"3000000",
                     "Status":"BERHASIL"
                 }
             ]
