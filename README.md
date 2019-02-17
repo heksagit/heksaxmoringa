@@ -38,8 +38,8 @@ http://heksaku.moringaku.com/my/heksaku.php
 |Premium| |[number]| Y | | |
 |SumInsured| |[number]| Y | | |
 |SPAJNo| |[text] | Y | 20 | |
-|ReferenceCode| |[text] | Y | 20 | |
-|TransactionCode| |[text] | Y | 20 | |
+|ReferenceCode| |[text] | Y | 20 | RefId from moringa |
+|TransactionCode| |[text] | Y | 20 | TrxId from moringa |
 |TransactionDate| |[date] | Y | | format dd/MM/yyyy |
 |PolicyHolder| |[jsonObject] | Y | | |
 || FullName |[text] | Y | 250 | |
@@ -193,10 +193,12 @@ http://heksaku.moringaku.com/my/heksaku2.php
 ##### - Body Structure
 | Params | | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|--|
-|ReferenceCode| |[text] | Y | 20 | |
-|TransactionCode| |[text] | Y | 20 | |
+|ReferenceCode| |[text] | Y | 20 | RefId from moringa |
+|TransactionCode| |[text] | Y | 20 | TrxId from moringa |
 |SPAJNo| |[text] | Y | 20 | |
-|status| |[text] | Y |500 | Berhasil, Gagal|
+|PolicyNo| |[text] | Y | 30 | |
+|PolicySoftCopyLink| |[text] | Y | 500 | |
+|Status| |[text] | Y |500 | BERHASIL, GAGAL|
 #
 
 ##### - Result Structure
@@ -226,7 +228,9 @@ $.ajax({
             "ReferenceCode":"Ref001",
             "TransactionCode":"Trx002",
             "SPAJNo":"NCB001",
-            "status": "Success",
+            "PolicyNo":"8190100001",
+            "PolicySoftCopyLink":"https://heksainsurance.co.id/heksaecommerce/home/cetakpolis?polNo=8190100001",
+            "Status": "BERHASIL",
     },
     success : function(response) {
       console.log(response);
@@ -305,7 +309,7 @@ http://heksaku.moringaku.com/my/heksaku3.php
 ###### JQuery Ajax Call 
 ```sh
 $.ajax({
-    url: "http://heksaku.moringaku.com/my/heksaku3.php",
+    url: "http://heksaku.moringaku.com/bulanan/heksaku3.php",
     authorization: {
         "type": "Basic Auth",
         "username": "5D89006A21776A45E050A8C04E0A33D8",
@@ -381,18 +385,20 @@ http://heksaku.moringaku.com/my/heksaku4.php
 ##### - Body Structure
 | Params | | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|--|
-|ReferenceCode| |[text] | Y | 20 | |
-|TransactionCode| |[text] | Y | 20 | |
+|ReferenceCode| |[text] | Y | 20 | refid from moringa |
+|TransactionCode| |[text] | Y | 20 | trxid from moringa |
 |SPAJNo| |[text] | Y | 20 | |
 |PolicyNo| |[text] | Y | 20 | |
-|RecurrPayments| |[ArrayJsonObject] | Y |  |  |
-| | RecurrID | [Text] | Y | 50 |  |
-| | RecurrDate | [date] | Y | | format dd/MM/yyyy|
+|ProductType| |[number] | Y | | 1 = Bulanan, 2 = Tahunan |
+|BillingPayments| |[ArrayJsonObject] | Y |  |  |
+| | BillingCode | [Text] | Y | 50 |  |
+| | PaymentDate | [date] | Y | | (tanggal pembayaran) format dd/MM/yyyy|
+| | DueDate | [date] | Y | | (tanggal Jatuh tempo) format dd/MM/yyyy|
 | | PaymentType | [Text] | Y | 50 | 1 = Credit Card, 2 = VA |
-| | Month | [number] | Y |  |  |
-| | Year | [number] | Y |  |  |
+| | BillingOrder | [number] | Y |  |  |
+| | BillingYearOrder | [number] | Y |  |  |
 | | Amount | [number] | Y |  |  |
-| | Status | [Text] | Y |  | Berhasil, Gagal |
+| | Status | [Text] | Y |  | BERHASIL, GAGAL |
 
 #
 
@@ -422,24 +428,27 @@ $.ajax({
     data: {
             "ReferenceCode":"Ref001",
             "TransactionCode":"Trx002",
-            "SPAJNo":"NCB001",
-            "PolicyNo": "011233144",
-            "RecurrPayments":[{
-                    "RecurrID":"90AFECAF-3367-4F5E-B381-AEDC0A18E640",
-                    "RecurrDate":"22/03/2019",
-                    "PaymentType":"2",
-                    "Month":"2",
-                    "Year":"2019",
+            "SPAJNo":"NCB19010009",
+            "PolicyNo": "8190100003",
+            "ProductType":"2"
+            "BillingPayments":[{
+                    "BillingCode":"190200000030",
+                    "PaymentDate":"20/03/2019",
+                    "DueDate":"25/02/2019",
+                    "PaymentType":"1",
+                    "BillOrder":"2",
+                    "BillYearOrder":"1",
                     "Amount":"500000",
-                    "Status":"Berhasil"
+                    "Status":"BERHASIL"
                 }, {
-                    "RecurrID":"D9ECF1A6-7AA4-4A9C-B148-48504E663C32",
-                    "RecurrDate":"22/03/2019",
-                    "PaymentType":"2",
-                    "Month":"3",
-                    "Year":"2019",
+                    "BillingCode":"190200000030",
+                    "PaymentDate":"20/03/2019",
+                    "DueDate":"25/03/2019",
+                    "PaymentType":"1",
+                    "BillOrder":"3",
+                    "BillYearOrder":"1",
                     "Amount":"500000",
-                    "Status":"Berhasil"
+                    "Status":"BERHASIL"
                 }
             ]
     },
@@ -602,6 +611,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=<dd/MM/yyy
 |Value| |[jsonObject] | Y | | | 
 ||ProductName| | [text] | Y |150 | |
 ||ProductPackageName| |[text] | Y |150 | |
+||ProductType| |[number] | Y |  | 1 = Bulanan, 2 = Tahunan |
 ||Premium| |[number]| Y | | |
 ||SumInsured| |[number]| Y | | |
 ||SPAJNo| |[text] | Y | 20 | |
@@ -671,8 +681,9 @@ $.ajax({
     "Value": {
                 "ProductName": "Heksa Proteksi Plus",
                 "ProductPackageName": "Silver",
-                "Premium": 1500000,
-                "SumInsured": 65000000,
+                "ProductType": "2",
+                "Premium": "1500000",
+                "SumInsured": "65000000",
                 "ReferenceCode": "moringaku",
                 "SPAJNo": "NCB000001071",
                 "TransactionCode": "testtingID1245",
@@ -712,8 +723,8 @@ $.ajax({
             {
                 "ProductName": "Heksa Proteksi Plus",
                 "ProductPackageName": "Silver",
-                "Premium": 1500000,
-                "SumInsured": 85000000,
+                "Premium": "1500000",
+                "SumInsured": "85000000",
                 "ReferenceCode": "ncb000001011",
                 "SPAJNo": "NCB000001072",
                 "TransactionCode": "153854380724677",
@@ -803,6 +814,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByTrxID?trxid=testting
 |Value| |[jsonObject] | Y | | | 
 ||ProductName| | [text] | Y |150 | |
 ||ProductPackageName| |[text] | Y |150 | |
+||ProductType| |[number] | Y |  | 1 = Bulanan, 2 = Tahunan |
 ||Premium| |[number]| Y | | |
 ||SumInsured| |[number]| Y | | |
 ||SPAJNo| |[text] | Y | 20 | |
@@ -872,10 +884,11 @@ $.ajax({
     "Value": {
                 "ProductName": "Heksa Proteksi Plus",
                 "ProductPackageName": "Silver",
-                "Premium": 1500000,
-                "SumInsured": 65000000,
-                "ReferenceCode": "moringaku",
+                "ProductType": "2",
+                "Premium": "1500000",
+                "SumInsured": "65000000",
                 "SPAJNo": "NCB000001071",
+                "ReferenceCode": "moringaku",
                 "TransactionCode": "testtingID1245",
                 "TransactionDate": "03/10/2018",
                 "PaymentStatus": "GAGAL",
@@ -913,8 +926,8 @@ $.ajax({
             {
                 "ProductName": "Heksa Proteksi Plus",
                 "ProductPackageName": "Silver",
-                "Premium": 1500000,
-                "SumInsured": 85000000,
+                "Premium": "1500000",
+                "SumInsured": "85000000",
                 "ReferenceCode": "ncb000001011",
                 "SPAJNo": "NCB000001072",
                 "TransactionCode": "153854380724677",
