@@ -390,9 +390,9 @@ http://heksaku.moringaku.com/bulanan/heksaku4.php
 |SPAJNo| |[text] | Y | 20 | |
 |PolicyNo| |[text] | Y | 20 | |
 |ProductType| |[number] | Y | | 1 = Bulanan, 2 = Tahunan |
-|PaymentDate| |[date] | Y |  | (tanggal pembayaran) format dd/MM/yyyy |
 |BillingPayments| |[ArrayJsonObject] | Y |  |  |
 | | BillingCode | [Text] | Y | 50 |  |
+| | PaymentDate | [date] | Y | | (tanggal pembayaran) format dd/MM/yyyy|
 | | DueDate | [date] | Y | | (tanggal Jatuh tempo) format dd/MM/yyyy|
 | | PaymentType | [Text] | Y | 50 | 1 = Credit Card, 2 = VA |
 | | BillingOrder | [number] | Y |  |  |
@@ -431,9 +431,9 @@ $.ajax({
             "SPAJNo":"NCB19010009",
             "PolicyNo": "8190100003",
             "ProductType":"1"
-            "PaymentDate":"20/03/2019",
             "BillingPayments":[{
                     "BillingCode":"190200000030",
+                    "PaymentDate":"20/03/2019",
                     "DueDate":"25/02/2019",
                     "PaymentType":"1",
                     "BillOrder":"2",
@@ -442,6 +442,7 @@ $.ajax({
                     "Status":"BERHASIL"
                 }, {
                     "BillingCode":"190200000030",
+                    "PaymentDate":"20/03/2019",
                     "DueDate":"25/03/2019",
                     "PaymentType":"1",
                     "BillOrder":"3",
