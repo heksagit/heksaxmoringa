@@ -13,7 +13,7 @@ ___________________________________________________________
 
 ##### - Endpoint
 ```sh
-http://heksaku.moringaku.com/my/heksaku.php
+http://api.moringaku.com/partner/heksa/heksaku.php
 ```
 #
 
@@ -83,7 +83,7 @@ http://heksaku.moringaku.com/my/heksaku.php
 ###### JQuery Ajax Call 
 ```sh
 $.ajax({
-    url: "http://heksaku.moringaku.com/my/heksaku.php",
+    url: "http://api.moringaku.com/partner/heksa/heksaku.php",
     authorization: {
         "type": "Basic Auth",
         "username": "5D89006A21776A45E050A8C04E0A33D8",
@@ -177,7 +177,7 @@ ____________________________________________________________________
 #
 ##### - Endpoint
 ```sh
-http://heksaku.moringaku.com/my/heksaku2.php
+http://api.moringaku.com/partner/heksa/heksaku2.php
 ```
 #
 ##### - Method : POST
@@ -213,7 +213,7 @@ http://heksaku.moringaku.com/my/heksaku2.php
 ###### JQuery Ajax Call 
 ```sh
 $.ajax({
-    url: "http://heksaku.moringaku.com/my/heksaku2.php",
+    url: "http://api.moringaku.com/partner/heksa/heksaku2.php",
     authorization: {
         "type": "Basic Auth",
         "username": "5D89006A21776A45E050A8C04E0A33D8",
@@ -274,7 +274,7 @@ ____________________________________________________________________
 ##### - Endpoint
 
 ```sh
-http://heksaku.moringaku.com/my/heksaku3.php
+http://api.moringaku.com/partner/heksa/heksaku3.php
 ```
 #
 ##### - Method : POST
@@ -309,7 +309,7 @@ http://heksaku.moringaku.com/my/heksaku3.php
 ###### JQuery Ajax Call 
 ```sh
 $.ajax({
-    url: "http://heksaku.moringaku.com/bulanan/heksaku3.php",
+    url: "http://api.moringaku.com/partner/heksa/heksaku3.php",
     authorization: {
         "type": "Basic Auth",
         "username": "5D89006A21776A45E050A8C04E0A33D8",
@@ -369,7 +369,7 @@ ____________________________________________________________________
 #
 ##### - Endpoint
 ```sh
-http://heksaku.moringaku.com/my/heksaku4.php
+http://api.moringaku.com/partner/heksa/heksaku4.php
 ```
 #
 ##### - Method : POST
@@ -414,7 +414,7 @@ http://heksaku.moringaku.com/my/heksaku4.php
 ###### JQuery Ajax Call 
 ```sh
 $.ajax({
-    url: "http://heksaku.moringaku.com/my/heksaku4.php",
+    url: "http://api.moringaku.com/partner/heksa/heksaku4.php",
     authorization: {
         "type": "Basic Auth",
         "username": "5D89006A21776A45E050A8C04E0A33D8",
@@ -493,7 +493,7 @@ ____________________________________________________________________
 #
 ##### - Endpoint
 ```sh
-http://heksaku.moringaku.com/my/heksaku5.php
+http://api.moringaku.com/partner/heksa/heksaku5.php
 ```
 #
 ##### - Method : POST
@@ -527,7 +527,7 @@ http://heksaku.moringaku.com/my/heksaku5.php
 ###### JQuery Ajax Call 
 ```sh
 $.ajax({
-    url: "http://heksaku.moringaku.com/my/heksaku5.php",
+    url: "http://api.moringaku.com/partner/heksa/heksaku5.php",
     authorization: {
         "type": "Basic Auth",
         "username": "5D89006A21776A45E050A8C04E0A33D8",
