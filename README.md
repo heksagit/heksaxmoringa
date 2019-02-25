@@ -41,6 +41,7 @@ http://api.moringaku.com/partner/heksa/heksaku.php
 |ReferenceCode| |[text] | Y | 20 | RefId from moringa |
 |TransactionCode| |[text] | Y | 20 | TrxId from moringa |
 |TransactionDate| |[date] | Y | | format dd/MM/yyyy |
+|PaymentType| |[text] | Y | 20 | CC = Credit Card, VA = Virtual Account |
 |PolicyHolder| |[jsonObject] | Y | | |
 || FullName |[text] | Y | 250 | |
 || Email |[text] | Y | 50 | |
@@ -390,6 +391,7 @@ http://api.moringaku.com/partner/heksa/heksaku4.php
 |SPAJNo| |[text] | Y | 20 | |
 |PolicyNo| |[text] | Y | 20 | |
 |ProductType| |[number] | Y | | 1 = Bulanan, 2 = Tahunan |
+|ProductPackageName| |[text]| Y | | Bronze,Silver,Gold,Basic,Standard,Premium  |
 |BillingPayments| |[ArrayJsonObject] | Y |  |  |
 | | BillingCode | [Text] | Y | 50 |  |
 | | PaymentDate | [date] | Y | | (tanggal pembayaran) format dd/MM/yyyy|
@@ -431,6 +433,7 @@ $.ajax({
             "SPAJNo":"NCB19010009",
             "PolicyNo": "8190100003",
             "ProductType":"2"
+            "ProductPackageName":"Silver"
             "BillingPayments":[{
                     "BillingCode":"190200000030",
                     "PaymentDate":"20/12/2019",
@@ -482,14 +485,14 @@ $.ajax({
 ____________________________________________________________________
 
 ____________________________________________________________________
-### Submit Repayment Page URL
+### Submit Virtual Account Page URL
 #### URL & Params Required:
 
 ##### - Features
   - Sender : **Heksa**
   - Target API : **Moringa**
-  - Submit Repayment Page URL From **Heksa** To **Moringa** API
-  - Kirim URL untuk pembayaran ulang apabila tidak ada transaksi selama 1 jam / terjadi error pada doku
+  - Submit Nomor Virtual Account From **Heksa** To **Moringa** API
+  - Kirim Virtual Account ketika pilih Virtual Account Sebagai Jenis Pembayaran doku
 #
 ##### - Endpoint
 ```sh
@@ -511,7 +514,9 @@ http://api.moringaku.com/partner/heksa/heksaku5.php
 |--|--|--|--|--|--|
 |ReferenceCode| |[text] | Y | 20 | |
 |TransactionCode| |[text] | Y | 20 | |
-|URL| |[text] | Y | 250 | |
+|NoVirtualAccount| |[text] | Y | 250 | |
+|Process| |[text] | Y | 250 | NewBusiness, Renewal |
+|DateProcess| | [Date] | Y | | format dd/MM/yyyy|
 
 #
 
@@ -541,7 +546,103 @@ $.ajax({
     data: {
             "ReferenceCode":"Ref001",
             "TransactionCode":"Trx002",
-            "URL":"https://heksainsurance.co.id/heksaecommerce/beli/repayment?trxid=Trx002&refid=Ref001"
+            "NoVirtualAccount":"8856075900000106",
+            "Process":"NewBusiness",
+            "DateProcess":"02/25/2019"
+    },
+    success : function(response) {
+      console.log(response);
+    }
+  });
+```
+#
+
+##### Sample response:
+###### Success Response
+```sh
+{
+    "status": 200,
+    "message": "Success",
+    "data": {
+    }
+}
+```
+###### Failed Response
+```sh
+{
+    "status": 500,
+    "message": "There is an error in system",
+    "data": {
+    }
+}
+```
+#
+____________________________________________________________________
+
+
+____________________________________________________________________
+### Submit Update Status Polis Page URL
+#### URL & Params Required:
+
+##### - Features
+  - Sender : **Heksa**
+  - Target API : **Moringa**
+  - Update Status Polis From **Heksa** To **Moringa** API
+  - Kirim Status Polis Ke Moringa dengan Status (Inforce,Surrender,Lapse)
+#
+##### - Endpoint
+```sh
+http://api.moringaku.com/partner/heksa/heksaku6.php
+```
+#
+##### - Method : POST
+#
+
+##### - Authorization Basic Auth
+| Params | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|
+|username| [text] | Y | | |
+|password|[text] | Y | | |
+#
+
+##### - Body Structure
+| Params | | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+|ReferenceCode| |[text] | Y | 20 | |
+|TransactionCode| |[text] | Y | 20 | |
+|PolicyNo| |[text] | Y | 30 | |
+|Status| |[text] | Y | 50 | Inforce,Surrender,Lapse |
+
+#
+
+##### - Result Structure
+| Params |  | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+| status |  | [Text] | Y | 4 |  |
+| message |  | [Text] | Y | 100 |  |
+| data |  | [jsonObject]  |  |  |  |
+#
+
+##### - Sample Call:
+###### JQuery Ajax Call 
+```sh
+$.ajax({
+    url: "http://api.moringaku.com/partner/heksa/heksaku6.php",
+    authorization: {
+        "type": "Basic Auth",
+        "username": "5D89006A21776A45E050A8C04E0A33D8",
+        "password":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
+    }
+    headers: {
+        "Authorization": "5D89006A21776A45E050A8C04E0A33D8",
+    }
+    dataType: "json",
+    type : "POST",
+    data: {
+            "ReferenceCode":"Ref001",
+            "TransactionCode":"Trx002",
+            "PolicyNo":"8190100001",
+            "Status":"Lapse"
     },
     success : function(response) {
       console.log(response);
@@ -618,6 +719,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=<dd/MM/yyy
 ||ReferenceCode| |[text] | Y | 20 | |
 ||TransactionCode| |[text] | Y | 20 | |
 ||TransactionDate| |[date] | Y | | format dd/MM/yyyy |
+||PaymentType| |[text] | Y | 20 | CC = Credit Card, VA = Virtual Account |
 ||PolicyHolder| |[jsonObject] | Y | | |
 ||| FullName |[text] | Y | 250 | |
 ||| Email |[text] | Y | 50 | |
@@ -689,6 +791,7 @@ $.ajax({
                 "TransactionCode": "testtingID1245",
                 "TransactionDate": "03/10/2018",
                 "PaymentStatus": "GAGAL",
+                "PaymentType": "CC",
                 "PolicyHolder": {
                     "FullName": "Test DOKU",
                     "Email": "test@gmail.com",
@@ -821,6 +924,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByTrxID?trxid=testting
 ||ReferenceCode| |[text] | Y | 20 | |
 ||TransactionCode| |[text] | Y | 20 | |
 ||TransactionDate| |[date] | Y | | format dd/MM/yyyy |
+||PaymentType| |[text] | Y | 20 | CC = Credit Card, VA = Virtual Account |
 ||PolicyHolder| |[jsonObject] | Y | | |
 ||| FullName |[text] | Y | 250 | |
 ||| Email |[text] | Y | 50 | |
@@ -892,6 +996,7 @@ $.ajax({
                 "TransactionCode": "testtingID1245",
                 "TransactionDate": "03/10/2018",
                 "PaymentStatus": "GAGAL",
+                "PaymentType": "VA",
                 "PolicyHolder": {
                     "FullName": "Test DOKU",
                     "Email": "test@gmail.com",
