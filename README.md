@@ -1,4 +1,4 @@
-# API Gateway Product Tahunan
+# API Gateway Product
 PT Asuransi Heksa Insurance X Moringa API Gateway 
 ___________________________________________________________
 
@@ -49,7 +49,7 @@ http://api.moringaku.com/partner/heksa/heksaku.php
 || KTPNo |[text] | Y | 16 | |
 || DOB |[date] | Y | | format dd/MM/yyyy|
 || Address |[text] | Y | 200 | |
-|| Sex |[text] | Y | | e.x pria, wanita |
+|| Sex |[text] | Y | | e.x L = pria, P = wanita |
 || ProvinceName |[text] | Y | |  |
 || CityName |[text] | Y | | |
 || NPWP |[text] | Y | | |
@@ -60,13 +60,15 @@ http://api.moringaku.com/partner/heksa/heksaku.php
 || KTPNo |[text] | Y | 16 | |
 || DOB |[date] | Y | | format dd/MM/yyyy|
 || Address |[text] | Y | 200 | |
-|| Sex |[text] | Y | | e.x pria, wanita |
+|| Sex |[text] | Y | | e.x L = pria, P = wanita |
 || ProvinceName |[text] | Y | |  |
 || CityName |[text] | Y | | |
-|Beneficiary| |[jsonObject] | Y | | |
+|Beneficiary| |[ArrayjsonObject] | Y | | |
 || FullName |[text] | Y | 50 | |
 || Relation |[text] | Y | |e.x  istri, suami, anak, ayah, ibu, kakak, adik, orang tua|
 || DOB |[date] | Y | | format dd/MM/yyyy|
+|| Sex |[text] | Y | | e.x L = pria, P = wanita|
+|| Percentage |[number] | Y | | |
 |Bank| |[jsonObject] | Y | | |
 || BankName |[text] | Y | | |
 || BankBranch |[text] | Y | | |
@@ -128,11 +130,26 @@ $.ajax({
                 "ProvinceName":"Jawa Barat",
                 "CityName":"Cirebon"
             },
-            "Beneficiary": {
-              "FullName":"penerima1",
-              "Relation":"Anak",
-              "DOB":"02/07/2017"
-            },
+            "Beneficiary": [{
+			        "FullName": "Jony",
+			        "Relation": "suami",
+			        "DOB": "14/03/1987",
+			        "Gender": "L",
+			        "Percentage": 25
+		        }, {
+			        "FullName": "Marina",
+			        "Relation": "anak",
+			        "DOB": "14/03/2019",
+			        "Sex": "P",
+			        "Percentage": 25
+		        }, {
+			        "FullName": "Susi Menarika",
+			        "Relation": "saudara kandung",
+			        "DOB": "15/03/1989",
+			        "Gender": "P",
+			        "Percentage": 50
+		        }
+	        ],
             "Bank": {
               "BankName":"Mandiri",
               "BankBranch":"kuningan",
@@ -745,6 +762,8 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=<dd/MM/yyy
 ||| FullName |[text] | Y | 50 | |
 ||| Relation |[text] | Y | |e.x  istri, suami, anak, ayah, ibu, kakak, adik, orang tua|
 ||| DOB |[date] | Y | | format dd/MM/yyyy|
+||| Sex |[text] | Y | | e.x L = pria, P = wanita|
+||| Percentage |[number] | Y | | |
 ||Bank| |[jsonObject] | Y | | |
 ||| BankName |[text] | Y | | |
 ||| BankBranch |[text] | Y | | |
@@ -856,7 +875,26 @@ $.ajax({
                     "ProvinceName": "Nanggroe Aceh Darussalam (NAD)",
                     "CityName": "Kabupaten Aceh Barat"
                 },
-                "Beneficiary": null,
+                "Beneficiary": [{
+			            "FullName": "Jony",
+			            "Relation": "suami",
+			            "DOB": "14/03/1987",
+			            "Sex": "L",
+			            "Percentage": 25
+		            }, {
+			            "FullName": "Marina",
+			            "Relation": "anak",
+			            "DOB": "14/03/2019",
+			            "Sex": "P",
+			            "Percentage": 25
+		            }, {
+			            "FullName": "Susi Menarika",
+			            "Relation": "saudara kandung",
+			            "DOB": "15/03/1989",
+			            "Sex": "P",
+			            "Percentage": 50
+		            }
+	            ],
                 "Bank": {
                     "BankName": "Mandiri",
                     "BankBranch": "Cirebon",
@@ -950,6 +988,8 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByTrxID?trxid=testting
 ||| FullName |[text] | Y | 50 | |
 ||| Relation |[text] | Y | |e.x  istri, suami, anak, ayah, ibu, kakak, adik, orang tua|
 ||| DOB |[date] | Y | | format dd/MM/yyyy|
+||| Sex |[text] | Y | | e.x L = pria, P = wanita|
+||| Percentage |[number] | Y | | |
 ||Bank| |[jsonObject] | Y | | |
 ||| BankName |[text] | Y | | |
 ||| BankBranch |[text] | Y | | |
@@ -1020,7 +1060,26 @@ $.ajax({
                     "ProvinceName": "DKI Jakarta",
                     "CityName": "Kota Jakarta Barat"
                 },
-                "Beneficiary": null,
+                "Beneficiary": [{
+			            "FullName": "Jony",
+			            "Relation": "suami",
+			            "DOB": "14/03/1987",
+			            "Gender": "L",
+			            "Percentage": 25
+		            }, {
+			            "FullName": "Marina",
+			            "Relation": "anak",
+			            "DOB": "14/03/2019",
+			            "Sex": "P",
+			            "Percentage": 25
+		            }, {
+			            "FullName": "Susi Menarika",
+			            "Relation": "saudara kandung",
+			            "DOB": "15/03/1989",
+			            "Gender": "P",
+			            "Percentage": 50
+		            }
+	            ],
                 "Bank": {
                     "BankName": "BCA",
                     "BankBranch": "Jakarta",
@@ -1061,7 +1120,26 @@ $.ajax({
                     "ProvinceName": "Nanggroe Aceh Darussalam (NAD)",
                     "CityName": "Kabupaten Aceh Barat"
                 },
-                "Beneficiary": null,
+                "Beneficiary": [{
+			            "FullName": "Jony",
+			            "Relation": "suami",
+			            "DOB": "14/03/1987",
+			            "Sex": "L",
+			            "Percentage": 25
+		            }, {
+			            "FullName": "Marina",
+			            "Relation": "anak",
+			            "DOB": "14/03/2019",
+			            "Sex": "P",
+			            "Percentage": 25
+		            }, {
+			            "FullName": "Susi Menarika",
+			            "Relation": "saudara kandung",
+			            "DOB": "15/03/1989",
+			            "Sex": "P",
+			            "Percentage": 50
+		            }
+	            ],
                 "Bank": {
                     "BankName": "Mandiri",
                     "BankBranch": "Cirebon",
