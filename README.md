@@ -413,7 +413,7 @@ http://api.moringaku.com/partner/heksa/heksaku4.php
 | | BillingCode | [Text] | Y | 50 |  |
 | | PaymentDate | [date] | Y | | (tanggal pembayaran) format dd/MM/yyyy|
 | | DueDate | [date] | Y | | (tanggal Jatuh tempo) format dd/MM/yyyy|
-| | PaymentType | [Text] | Y | 50 | 1 = Credit Card, 2 = VA |
+| | PaymentType | [Text] | Y | 50 | 1 = Credit Card, 2 = VA, 3 = OVO |
 | | BillingOrder | [number] | Y |  |  |
 | | BillingYearOrder | [number] | Y |  |  |
 | | Amount | [number] | Y |  |  |
@@ -724,19 +724,20 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=<dd/MM/yyy
 ##### - Result Structure
 | Params |  | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|--|
-|StatusCode|| [text] | Y |4 | 00 = success, 50 = error |
-|StatusMessage|| [text] | Y |100 | API Status success, error |
-|Value| |[jsonObject] | Y | | | 
+|status|| [number] | Y | | 200 = success, 500 = error |
+|message|| [text] | Y |100 | API Status success, error |
+|data| |[jsonObject] | Y | | | 
 ||ProductName| | [text] | Y |150 | |
 ||ProductPackageName| |[text] | Y |150 | |
 ||ProductType| |[number] | Y |  | 1 = Bulanan, 2 = Tahunan |
 ||Premium| |[number]| Y | | |
 ||SumInsured| |[number]| Y | | |
 ||SPAJNo| |[text] | Y | 20 | |
+||PolicyNo| |[text] | Y | 30 | |
 ||ReferenceCode| |[text] | Y | 20 | |
 ||TransactionCode| |[text] | Y | 20 | |
 ||TransactionDate| |[date] | Y | | format dd/MM/yyyy |
-||PaymentType| |[text] | Y | 20 | CC = Credit Card, VA = Virtual Account |
+||PaymentType| |[text] | Y | 20 | CC = Credit Card, VA = Virtual Account, OVO = OVO |
 ||PolicyHolder| |[jsonObject] | Y | | |
 ||| FullName |[text] | Y | 250 | |
 ||| Email |[text] | Y | 50 | |
@@ -797,9 +798,9 @@ $.ajax({
 ###### Success Response
 ```sh
 {
-    "StatusCode": "00",
-    "StatusMessage": "Success",
-    "Value": {
+    "status": 200,
+    "message": "success",
+    "data": [{
                 "ProductName": "Heksa Proteksi Plus",
                 "ProductPackageName": "Silver",
                 "ProductType": "2",
@@ -807,6 +808,7 @@ $.ajax({
                 "SumInsured": "65000000",
                 "ReferenceCode": "moringaku",
                 "SPAJNo": "NCB000001071",
+                "PolicyNo": "8100500001",
                 "TransactionCode": "testtingID1245",
                 "TransactionDate": "03/10/2018",
                 "PaymentStatus": "GAGAL",
@@ -834,7 +836,14 @@ $.ajax({
                     "ProvinceName": "DKI Jakarta",
                     "CityName": "Kota Jakarta Barat"
                 },
-                "Beneficiary": null,
+                "Beneficiary": [{
+			            "FullName": "Jony",
+			            "Relation": "suami",
+			            "DOB": "14/03/1987",
+			            "Sex": "L",
+			            "Percentage": 100
+		            }
+	            ],
                 "Bank": {
                     "BankName": "BCA",
                     "BankBranch": "Jakarta",
@@ -849,6 +858,7 @@ $.ajax({
                 "SumInsured": "85000000",
                 "ReferenceCode": "ncb000001011",
                 "SPAJNo": "NCB000001072",
+                "PolicyNo": "8100500002",
                 "TransactionCode": "153854380724677",
                 "TransactionDate": "03/10/2018",
                 "PaymentStatus": "GAGAL",
@@ -902,14 +912,15 @@ $.ajax({
                     "BankAccountNo": "04242323434324"
                 }
             }
+        ]
     },
 ```
 ###### Failed Response
 ```sh
 {
-    "StatusCode": "500",
-    "StatusMessage": "There is an error in system",
-    "Value" : null
+    "status": 500,
+    "message": "There is an error in system",
+    "data" : null
 }
 ```
 #
@@ -950,15 +961,16 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByTrxID?trxid=testting
 ##### - Result Structure
 | Params | | Data Type | Mandatory | Length | Description |
 |--|--|--|--|--|--|
-|StatusCode|| [text] | Y |4 | 00 = success, 50 = error |
-|StatusMessage|| [text] | Y |100 | API Status success, error |
-|Value| |[jsonObject] | Y | | | 
+|status|| [number] | Y | | 200 = success, 500 = error |
+|message|| [text] | Y |100 | API Status success, error |
+|data| |[jsonObject] | Y | | | 
 ||ProductName| | [text] | Y |150 | |
 ||ProductPackageName| |[text] | Y |150 | |
 ||ProductType| |[number] | Y |  | 1 = Bulanan, 2 = Tahunan |
 ||Premium| |[number]| Y | | |
 ||SumInsured| |[number]| Y | | |
 ||SPAJNo| |[text] | Y | 20 | |
+||PolicyNo| |[text] | Y | 30 | |
 ||ReferenceCode| |[text] | Y | 20 | |
 ||TransactionCode| |[text] | Y | 20 | |
 ||TransactionDate| |[date] | Y | | format dd/MM/yyyy |
@@ -1001,7 +1013,7 @@ https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByTrxID?trxid=testting
 ###### JQuery Ajax Call 
 ```sh
 $.ajax({
-    url: "https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByDate?date=03/10/2018",
+    url: "https://heksainsurance.co.id/heksaecommerceapi/api/GetDataByTrxID?trxid=testtingID1245",
     authorization: {
         "type": "Basic Auth",
         "username": "5D89006A21776A45E050A8C04E0A33D8",
@@ -1023,15 +1035,16 @@ $.ajax({
 ###### Success Response
 ```sh
 {
-    "StatusCode": "00",
-    "StatusMessage": "Success",
-    "Value": {
+    "status": 200,
+    "message": "success",
+    "data": {
                 "ProductName": "Heksa Proteksi Plus",
                 "ProductPackageName": "Silver",
                 "ProductType": "2",
                 "Premium": "1500000",
                 "SumInsured": "65000000",
                 "SPAJNo": "NCB000001071",
+                "PolicyNo": "8100500001",
                 "ReferenceCode": "moringaku",
                 "TransactionCode": "testtingID1245",
                 "TransactionDate": "03/10/2018",
@@ -1086,66 +1099,6 @@ $.ajax({
                     "BankAccountName": "Test",
                     "BankAccountNo": "123456789"
                 }
-            },
-            {
-                "ProductName": "Heksa Proteksi Plus",
-                "ProductPackageName": "Silver",
-                "Premium": "1500000",
-                "SumInsured": "85000000",
-                "ReferenceCode": "ncb000001011",
-                "SPAJNo": "NCB000001072",
-                "TransactionCode": "153854380724677",
-                "TransactionDate": "03/10/2018",
-                "PaymentStatus": "GAGAL",
-                "PolicyHolder": {
-                    "FullName": "testing production 1003",
-                    "Email": "xxxxx@outlook.com",
-                    "Phone": "08555555555",
-                    "KTPNo": "0324823482382823",
-                    "DOB": "06/10/2000",
-                    "Address": "asdasd asdasd",
-                    "Sex": "L",
-                    "ProvinceName": "Nanggroe Aceh Darussalam (NAD)",
-                    "CityName": "Kabupaten Aceh Barat",
-                    "NPWP": ""
-                },
-                "Insured": {
-                    "FullName": "testing production 1003",
-                    "Email": "xxxx@outlook.com",
-                    "Phone": "08555555555",
-                    "KTPNo": "0324823482382823",
-                    "DOB": "06/10/2000",
-                    "Address": "asdasd asdasd",
-                    "Sex": "L",
-                    "ProvinceName": "Nanggroe Aceh Darussalam (NAD)",
-                    "CityName": "Kabupaten Aceh Barat"
-                },
-                "Beneficiary": [{
-			            "FullName": "Jony",
-			            "Relation": "suami",
-			            "DOB": "14/03/1987",
-			            "Sex": "L",
-			            "Percentage": 25
-		            }, {
-			            "FullName": "Marina",
-			            "Relation": "anak",
-			            "DOB": "14/03/2019",
-			            "Sex": "P",
-			            "Percentage": 25
-		            }, {
-			            "FullName": "Susi Menarika",
-			            "Relation": "saudara kandung",
-			            "DOB": "15/03/1989",
-			            "Sex": "P",
-			            "Percentage": 50
-		            }
-	            ],
-                "Bank": {
-                    "BankName": "Mandiri",
-                    "BankBranch": "Cirebon",
-                    "BankAccountName": "xxxxxxxxxxx",
-                    "BankAccountNo": "04242323434324"
-                }
             }
     },
 ```
@@ -1153,9 +1106,154 @@ $.ajax({
 ###### Failed Response
 ```sh
 {
-    "StatusCode": "500",
-    "StatusMessage": "There is an error in system",
-    "Value" : null
+    "status": 500,
+    "message": "There is an error in system",
+    "data" : null
+}
+```
+#
+____________________________________________________________________
+
+
+### Get Daily Moringa Data Renewal By Date
+#### URL & Params Required:
+
+##### - Features
+  - Sender : **Moringa**
+  - Target API : **Heksa**
+  - Get All Transaction Renewal in 1 day
+#
+
+##### - Endpoint
+
+```sh
+https://heksainsurance.co.id/heksaecommerceapi/api/GetDataRenewalByDate?date=<dd/MM/yyyy>
+```
+#
+
+
+##### - Authorization Basic Auth
+| Params | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|
+|username| [text] | Y | | |
+|password|[text] | Y | | |
+#
+
+##### - Body Structure
+| Params | | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+|  |  |  |  |  |  |
+#
+
+##### - Result Structure
+| Params |  | Data Type | Mandatory | Length | Description |
+|--|--|--|--|--|--|
+|status|| [number] | Y | | 200 = success, 500 = error |
+|message|| [text] | Y |100 | API Status success, error |
+|data| |[jsonObject] | Y | | | 
+||ReferenceCode| | [text] | Y |20 | refid from moringa |
+||TransactionCode| |[text] | Y |20 | trxid from moringa |
+||SPAJNo| |[text] | Y | 20  | |
+||PolicyNo| |[text]| Y | 30 | |
+||ProductType| |[number]| Y | |  1 = Bulanan, 2 = Tahunan |
+||ProductPackageName| |[text] | Y |  | Bronze,Silver,Gold,Basic,Standard,Premium  |
+||BillingPayments| |[ArrayJsonObject] | Y | | |
+||| BillingCode |[text] | Y | 50 | |
+||| PaymentDate |[date] | Y | | (tanggal pembayaran) format dd/MM/yyyy |
+||| DueDate |[date] | Y |  | (tanggal Jatuh tempo) format dd/MM/yyyy|
+||| PaymentType |[text] | Y | 50 | 1 = Credit Card, 2 = VA, 3 = OVO |
+||| BillingOrder |[number] | Y | |  |
+||| BillingYearOrder |[number] | Y | | |
+||| Amount |[number] | Y | | |
+||| Status |[text] | Y | | BERHASIL, GAGAL |
+#
+
+##### - Sample Call:
+###### JQuery Ajax Call 
+```sh
+$.ajax({
+    url: "https://heksainsurance.co.id/heksaecommerceapi/api/GetDataRenewalByDate?date=03/10/2018",
+    authorization: {
+        "type": "Basic Auth",
+        "username": "5D89006A21776A45E050A8C04E0A33D8",
+        "password":"56c217cd-0bea-4f64-8ae2-2db0a71fea35"
+    }
+    headers: {
+        "Authorization": "5D89006A21776A45E050A8C04E0A33D8",
+    }
+    dataType: "json",
+    type : "POST",
+    success : function(response) {
+      console.log(response);
+    }
+  });
+```
+#
+
+##### - Sample response:
+###### Success Response
+```sh
+{
+    "status": 200,
+    "message": "Success",
+    "data": [
+        {
+            "ReferenceCode": "moringaku",
+            "TransactionCode": "15580870319021431",
+            "SPAJNo": "UNCB10050001",
+            "PolicyNo": "8100500001",
+            "ProductType": 1,
+            "ProductPackageName": "Basic",
+            "BillingPayments": [
+                {
+                    "BillingCode": "190500000179",
+                    "PaymentDate": "17/05/2019",
+                    "DueDate": "25/05/2019",
+                    "PaymentType": "2",
+                    "BillingOrder": 2,
+                    "BillingYearOrder": 1,
+                    "Amount": 150000,
+                    "Status": "BERHASIL"
+                }
+            ]
+        },{
+            "ReferenceCode": "moringaku2",
+            "TransactionCode": "15580870319021431",
+            "SPAJNo": "UNCB10050002",
+            "PolicyNo": "8100500002",
+            "ProductType": 1,
+            "ProductPackageName": "Basic",
+            "BillingPayments": [
+                {
+                    "BillingCode": "190500000180",
+                    "PaymentDate": "17/07/2019",
+                    "DueDate": "27/06/2019",
+                    "PaymentType": "2",
+                    "BillingOrder": 2,
+                    "BillingYearOrder": 1,
+                    "Amount": 150000,
+                    "Status": "BERHASIL"
+                },{
+                    "BillingCode": "190500000180",
+                    "PaymentDate": "17/07/2019",
+                    "DueDate": "27/07/2019",
+                    "PaymentType": "2",
+                    "BillingOrder": 3,
+                    "BillingYearOrder": 1,
+                    "Amount": 150000,
+                    "Status": "BERHASIL"
+                }
+            ]
+        }
+    ]
+    },
+```
+###### Failed Response
+```sh
+{
+    "status": 500,
+    "message": "There is an error in system",
+    "data" : null
 }
 ```
 #
